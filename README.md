@@ -19,7 +19,7 @@
 
 ### Persiapan
 
-Sumber data: Dataset karyawan berisi informasi demografis, pekerjaan, status attrition, dll. yang tersimpan dalam file [**employee_data.csv**](Dataset/employee_data.csv) atau unduh langsung dari [dicoding_dataset](https://github.com/dicodingacademy/dicoding_dataset/blob/main/employee/employee_data.csv).
+Sumber data: Dataset Student berisi informasi demografis, pekerjaan, status attrition, dll. yang tersimpan dalam file [**employee_data.csv**](Dataset/employee_data.csv) atau unduh langsung dari [dicoding_dataset](https://github.com/dicodingacademy/dicoding_dataset/blob/main/employee/employee_data.csv).
 
 Setup environment:
 
