@@ -182,7 +182,7 @@ Berdasarkan hasil evaluasi feature importance dari model LightGBM yang telah dio
 
 ### **👥 Karakteristik Umum Student yang Berpotensi Dropout:**
 
-Berdasarkan model prediktif, karyawan yang berisiko tinggi untuk resign cenderung memiliki karakteristik berikut:
+Berdasarkan model prediktif, student yang berpotensi untuk dropout cenderung memiliki karakteristik berikut:
 
 1️⃣ Mahasiswa yang berpotensi mengalami dropout umumnya memiliki nilai masuk yang rendah, yang menjadi indikator awal kurangnya kesiapan akademik.
 
