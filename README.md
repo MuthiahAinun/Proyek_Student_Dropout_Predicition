@@ -61,6 +61,7 @@ File-file ini diperlukan untuk menjalankan [app.py](app.py) tanpa perlu melatih 
 - pipeline.pkl: untuk preprocessing data (seperti encoding dan scaling).
 - LightGBM_model.pkl: model LightGBM yang sudah dilatih untuk memprediksi apakah student akan di dropout.
 - optimal_threshold.json: nilai threshold optimal (0.58) untuk mengubah probabilitas menjadi label prediksi (0 = tidak dropout, 1 = dropout).
+- expected_columns.json : daftar nama kolom (features) yang digunakan saat melatih model.
 
 3. Load Data Student
 Membaca file students_performance.csv yang berisi data student yang ingin diprediksi.
