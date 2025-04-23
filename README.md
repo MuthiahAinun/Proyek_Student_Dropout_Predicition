@@ -75,8 +75,8 @@ Data student diproses menggunakan pipeline yang sama dengan saat pelatihan model
 
 6. Hasil Prediksi
 - Kolom baru ditambahkan ke DataFrame:
-- Predicted_Dropout: hasil prediksi apakah student akan di dropout.
-- Dropout_Probability: probabilitas prediksi dari student yang akan di dropout.
+- Predicted_Dropout: hasil prediksi apakah student berpotensi dropout.
+- Dropout_Probability: probabilitas prediksi dari student yang berpotensi dropout.
 
 7. Simpan Hasil
 Hasil akhir disimpan ke file probability_export.csv.
