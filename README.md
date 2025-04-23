@@ -37,13 +37,13 @@ pip install -r requirements.txt
    ```
 2️⃣ Ikuti langkah-langkah di dalam notebook untuk melakukan pelatihan dan evaluasi model LightGBM.
 
-3️⃣ Simpan model LightGBM yang telah dilatih, atau **jika ingin melewati proses pelatihan model pada tahap no.2** , Anda dapat langsung mengunduh file-file berikut: [LightGBM_model.pkl](LightGBM_model.pkl), [pipeline.pkl](pipeline_lightgbm.pkl), [optimal_threshold.json](optimal_threshold.json), [features_train](expected_columns.json), dan [top_feature_importance.csv](feature_importance.csv).
+3️⃣ Simpan model LightGBM yang telah dilatih, atau **jika ingin melewati proses pelatihan model pada tahap no.2** , Anda dapat langsung mengunduh file-file berikut: [LightGBM_model.pkl](LightGBM_model.pkl), [pipeline.pkl](pipeline_lightgbm.pkl), [optimal_threshold.json](optimal_threshold.json), [features_train.json](expected_columns.json), dan [top_feature_importance.csv](feature_importance.csv).
 
 - ```LightGBM_model.pkl:``` berisi model LightGBM yang telah dilatih untuk memprediksi student yang berpotensi dropout.
 - ```pipeline.pkl:``` berisi preprocessing pipeline (seperti encoding dan scaling) yang diperlukan sebelum model melakukan prediksi.
 - ```optimal_threshold.json:``` menyimpan nilai threshold optimal (yaitu **0.58**) yang digunakan untuk mengubah probabilitas prediksi menjadi kelas akhir (dropout(1) atau tidak dropout(0).
 - ```top_feature_importance.csv:``` berisi daftar-daftar fitur paling berpengaruh terhadap prediksi dropout, yang berguna untuk memahami faktor-faktor utama yang mempengaruhi student dropout.
-- ```expected_columns.json``` adalah file berformat JSON yang berisi daftar nama kolom (features) yang digunakan saat melatih model. **File ini berfungsi untuk:**
+- ```features_train.json``` adalah file berformat JSON yang berisi daftar nama kolom (features) yang digunakan saat melatih model. **File ini berfungsi untuk:**
 
 1. **Validasi Input** : Memastikan bahwa setiap dataset baru yang di-upload memiliki kolom-kolom yang sama persis dengan data pelatihan.
 2. **Menjaga Konsistensi** : Menjaga urutan dan keberadaan fitur sebelum dilakukan preprocessing oleh pipeline, agar transformasi dan prediksi berjalan tanpa error.
