@@ -19,7 +19,7 @@
 
 ### Persiapan
 
-Sumber data: Dataset Student berisi informasi akademik, latar belakang student, status student, dll. yang tersimpan dalam file [**employee_data.csv**](students-performance.csv) atau unduh langsung dari [dicoding_dataset](https://github.com/dicodingacademy/dicoding_dataset/tree/main/students_performance).
+Sumber data: Dataset Student berisi informasi akademik, latar belakang student, status student, dll. yang tersimpan dalam file [**students-performance.csv**](students-performance.csv) atau unduh langsung dari [dicoding_dataset](https://github.com/dicodingacademy/dicoding_dataset/tree/main/students_performance).
 
 Setup environment:
 
