@@ -144,7 +144,7 @@ docker run -d -p 3000:3000 -v "C:\Users\ACER NITRO V15\metabase-share:/app/metab
 ## 📌Conclusion
 
 ---
-Berdasarkan hasil evaluasi feature importance dari model LightGBM yang telah dioptimalkan, ditemukan bahwa beberapa fitur memiliki kontribusi signifikan terhadap keputusan model dalam memprediksi kemungkinan student di dropout.
+Berdasarkan hasil evaluasi feature importance dari model LightGBM yang telah dioptimalkan, ditemukan bahwa beberapa fitur memiliki kontribusi signifikan terhadap keputusan model dalam memprediksi kemungkinan student berpotensi dropout.
 
 ---
 
