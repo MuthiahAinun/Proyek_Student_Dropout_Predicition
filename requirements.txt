@@ -3,3 +3,8 @@ pandas
 joblib
 lightgbm
 scikit-learn
+numpy
+matplotlib
+seaborn
+imbalanced-learn
+
