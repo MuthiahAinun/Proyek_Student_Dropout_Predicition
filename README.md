@@ -1,269 +1,275 @@
-# Proyek Akhir: Menyelesaikan Permasalahan Jaya Jaya Institut
+# Final Project: Solving the Dropout Issue at Jaya Jaya Institute
 
 ## Business Understanding
 
-> Jaya Jaya Institut merupakan institusi pendidikan tinggi yang telah berdiri sejak tahun 2000 dan dikenal menghasilkan lulusan berkualitas tinggi. Namun, tingginya angka mahasiswa yang tidak menyelesaikan studi atau dropout menjadi permasalahan serius. Dropout tidak hanya berdampak pada reputasi institusi, tetapi juga menyebabkan kerugian finansial dan hilangnya potensi kontribusi mahasiswa. Untuk mengurangi angka dropout, Jaya Jaya Institut ingin mengimplementasikan sistem prediksi dini yang mampu mengidentifikasi mahasiswa dengan risiko tinggi dropout sejak awal masa studi.
+> Jaya Jaya Institute is a higher education institution established in 2000, known for producing high-quality graduates. However, the high rate of student dropouts has become a serious concern. Dropouts not only impact the institution's reputation but also cause financial losses and the loss of potential contributions from students. To reduce the dropout rate, Jaya Jaya Institute aims to implement an early prediction system that can identify high-risk students from the beginning of their academic journey.
 
-### Permasalahan Bisnis
+### Business Problems
 
-1. Bagaimana cara mengidentifikasi mahasiswa yang berisiko dropout sejak awal perkuliahan?
-2. Faktor apa saja yang mempengaruhi kemungkinan seorang mahasiswa melakukan dropout?
-3. Bagaimana visualisasi performa mahasiswa dapat membantu pihak institusi dalam pengambilan keputusan?
+1. How can we identify students at risk of dropping out early in their studies?
+2. What are the key factors that influence a student's likelihood of dropping out?
+3. How can student performance visualizations support institutional decision-making?
 
-### Cakupan Proyek
+### Project Scope
 
-- Melakukan eksplorasi dan visualisasi data untuk memahami distribusi dan hubungan antar fitur.
-- Membangun model klasifikasi untuk memprediksi apakah seorang mahasiswa akan dropout atau tidak.
-- Mengembangkan dashboard visual untuk memantau performa mahasiswa.
-- Menyediakan prototype sistem prediksi yang dapat digunakan langsung melalui Streamlit.
+- Perform data exploration and visualization to understand the distribution and relationships between features.
+- Build a classification model to predict whether a student is likely to drop out.
+- Develop a visual dashboard to monitor student performance.
+- Provide a predictive system prototype that can be directly accessed via Streamlit.
 
-### Persiapan
+### Preparation
 
-Sumber data: Dataset Student berisi informasi akademik, latar belakang student, status student, dll. yang tersimpan dalam file [**students-performance.csv**](students-performance.csv) atau unduh langsung dari [dicoding_dataset](https://github.com/dicodingacademy/dicoding_dataset/tree/main/students_performance).
+**Data source**: The Student dataset contains academic information, student background, student status, and more. It is stored in the file [**students-performance.csv**](students-performance.csv), or you can download it directly from [dicoding_dataset](https://github.com/dicodingacademy/dicoding_dataset/tree/main/students_performance).
 
-Setup environment:
+**Environment setup**:
 
-## ⚙️Instalasi
-Pastikan Anda telah menginstal semua dependensi yang dibutuhkan:
+## ⚙️Installation
+Make sure all required dependencies are installed:
 ```
 pip install -r requirements.txt
 ```
-
 ---
-## 🎞️Menjalankan Proyek
-1️⃣ Jalankan notebook Jupyter atau Google Colab:
+
+## 🎞️Running the Project
+1️⃣ Launch the Jupyter Notebook or open it in Google Colab:
    ```
    jupyter notebook Proyek_Droupout_Prediction.ipynb
    ```
-2️⃣ Ikuti langkah-langkah di dalam notebook untuk melakukan pelatihan dan evaluasi model LightGBM.
 
-3️⃣ Simpan model LightGBM yang telah dilatih, atau **jika ingin melewati proses pelatihan model pada tahap no.2** , Anda dapat langsung mengunduh file-file berikut: [LightGBM_model.pkl](LightGBM_model.pkl), [pipeline.pkl](pipeline_lightgbm.pkl), [optimal_threshold.json](optimal_threshold.json), [features_train.json](expected_columns.json), dan [top_feature_importance.csv](feature_importance.csv).
+2️⃣ Follow the steps in the notebook to train and evaluate the LightGBM model.
 
-- ```LightGBM_model.pkl:``` berisi model LightGBM yang telah dilatih untuk memprediksi student yang berpotensi dropout.
-- ```pipeline.pkl:``` berisi preprocessing pipeline (seperti encoding dan scaling) yang diperlukan sebelum model melakukan prediksi.
-- ```optimal_threshold.json:``` menyimpan nilai threshold optimal (yaitu **0.58**) yang digunakan untuk mengubah probabilitas prediksi menjadi kelas akhir (dropout(1) atau tidak dropout(0).
-- ```top_feature_importance.csv:``` berisi daftar-daftar fitur paling berpengaruh terhadap prediksi dropout, yang berguna untuk memahami faktor-faktor utama yang mempengaruhi student dropout.
-- ```features_train.json``` adalah file berformat JSON yang berisi daftar nama kolom (features) yang digunakan saat melatih model. **File ini berfungsi untuk:**
+3️⃣ Save the trained LightGBM model, or **if you wish to skip the training process in step 2**, you can directly download the following files:  
+[LightGBM_model.pkl](LightGBM_model.pkl), [pipeline.pkl](pipeline_lightgbm.pkl), [optimal_threshold.json](optimal_threshold.json), [features_train.json](expected_columns.json), and [top_feature_importance.csv](feature_importance.csv).
 
-1. **Validasi Input** : Memastikan bahwa setiap dataset baru yang di-upload memiliki kolom-kolom yang sama persis dengan data pelatihan.
-2. **Menjaga Konsistensi** : Menjaga urutan dan keberadaan fitur sebelum dilakukan preprocessing oleh pipeline, agar transformasi dan prediksi berjalan tanpa error.
+- `LightGBM_model.pkl`: Contains the trained LightGBM model used to predict students at risk of dropping out.  
+- `pipeline.pkl`: Contains the preprocessing pipeline (e.g., encoding and scaling) required before the model can make predictions.  
+- `optimal_threshold.json`: Stores the optimal threshold value (**0.58**) used to convert predicted probabilities into final classes (dropout `1` or not `0`).  
+- `top_feature_importance.csv`: Lists the most influential features in dropout prediction, useful for understanding the key contributing factors.  
+- `features_train.json`: A JSON file containing the list of feature names used during model training. **This file serves to:**
 
-File-file ini diperlukan untuk menjalankan [app.py](app.py) tanpa perlu melatih ulang model.
+  1. **Validate Input**: Ensure any newly uploaded dataset has exactly the same column names as the training data.  
+  2. **Maintain Consistency**: Preserve the order and presence of features before they are passed through the preprocessing pipeline, ensuring transformations and predictions run without errors.
 
-4️⃣ Selanjutnya jalankan file [app.py](app.py) untuk melakukan prediksi student dropout berupa prototype model prediksi melalui Streamlit atau **jika ingin melewati tahap ini**, Anda dapat langsung mengakses prototype model melalui [Streamlit](https://proyekstudentdropoutpredicition-rifky2xe7kdqtykfxbcgcw.streamlit.app/). Berikut penjelasan mengenai tahapan dalam file tersebut:
+These files are required to run [app.py](app.py) without retraining the model.
 
-### **📄 Penjelasan Proses dalam app.py:**
+4️⃣ Next, run the [app.py](app.py) file to launch the student dropout prediction prototype using Streamlit.  
+Alternatively, if you prefer to skip this step, you can directly access the deployed prototype via Streamlit here:  
+👉 [Streamlit App](https://proyekstudentdropoutpredicition-rifky2xe7kdqtykfxbcgcw.streamlit.app/)
+
+Below is an explanation of the main processes inside `app.py`:
+
+### **📄 Process Overview in app.py:**
 ```
-1. Import Library
-- Mengimpor library yang diperlukan untuk pemrosesan data, pemuatan model, dan prediksi.
+1. Import Libraries  
+- Import all necessary libraries for data processing, model loading, and prediction.
 
-2. Load Model dan File Terkait
-- pipeline.pkl: untuk preprocessing data (seperti encoding dan scaling).
-- LightGBM_model.pkl: model LightGBM yang sudah dilatih untuk memprediksi apakah student akan di dropout.
-- optimal_threshold.json: nilai threshold optimal (0.58) untuk mengubah probabilitas menjadi label prediksi (0 = tidak dropout, 1 = dropout).
-- expected_columns.json : daftar nama kolom (features) yang digunakan saat melatih model.
+2. Load Model and Related Files  
+- `pipeline.pkl`: Used for data preprocessing (such as encoding and scaling).  
+- `LightGBM_model.pkl`: The trained LightGBM model used to predict whether a student is likely to drop out.  
+- `optimal_threshold.json`: Contains the optimal threshold value (0.58) used to convert prediction probabilities into binary class labels (0 = not dropout, 1 = dropout).  
+- `expected_columns.json`: A list of feature (column) names used during model training.
 
-3. Load Data Student
-Membaca file students_performance.csv yang berisi data student yang ingin diprediksi.
+3. Load Student Data  
+- Reads the `students_performance.csv` file containing student data to be predicted.
 
-4. Preprocessing Data
-Data student diproses menggunakan pipeline yang sama dengan saat pelatihan model.
+4. Data Preprocessing  
+- Student data is processed using the same pipeline that was applied during model training.
 
-5. Prediksi
-- Model menghasilkan probabilitas kemungkinan student di dropout.
-- Probabilitas tersebut dikonversi menjadi label biner berdasarkan threshold (0.58).
+5. Prediction  
+- The model outputs the probability of a student potentially dropping out.  
+- These probabilities are then converted into binary labels based on the threshold value (0.58).
 
-6. Hasil Prediksi
-- Kolom baru ditambahkan ke DataFrame:
-- Predicted_Dropout: hasil prediksi apakah student berpotensi dropout.
-- Dropout_Probability: probabilitas prediksi dari student yang berpotensi dropout.
+6. Prediction Results  
+- New columns are added to the DataFrame:  
+  - `Predicted_Dropout`: The prediction result indicating whether the student is likely to drop out.  
+  - `Dropout_Probability`: The predicted probability of the student potentially dropping out.
 
-7. Simpan Hasil
-Hasil akhir disimpan ke file probability_export.csv.
+7. Save Results  
+- The final results are saved to a file named `probability_export.csv`.
 ```
 
 ## 🎯Business Dashboard
 
-**Dashboard disusun secara berurutan untuk memberikan narasi yang jelas:**
+**The dashboard is organized sequentially to provide a clear narrative:**
 
-1. Jumlah Total Student: Menunjukkan total data sebanyak 4.424 Students.
-2. Prediksi Dropout: Menampilkan jumlah Student yang diprediksi dropout (1.388 atau ~31.4%).
-3. Top 10 Faktor Penyebab Student Dropout: Fitur paling berpengaruh adalah Admission_grade, Previous_qualification_grade, Course, dan Mothers_occupation.
-4. Strategi Retensi: Disusun berdasarkan insight yang ditemukan dari fitur-fitur penting.
+1. **Total Number of Students**: Displays a total of 4,424 student records.
+2. **Dropout Predictions**: Shows the number of students predicted to drop out (1,388 or ~31.4%).
+3. **Top 10 Factors Influencing Student Dropout**: The most influential features include `Admission_grade`, `Previous_qualification_grade`, `Course`, and `Mothers_occupation`.
+4. **Retention Strategy**: Developed based on insights derived from the most important features.
 
-## ✨Menjalankan Dashboard Metabase via Docker 
+## ✨Running the Metabase Dashboard via Docker
 
-1️⃣ Konversi File ke Database SQLite
+1️⃣ **Convert Files to SQLite Database**
 
-Sebelum digunakan di **Metabase**, file hasil prediksi **[probability_export.csv](probability_export.csv)** dan file **[top_feature_importance.csv](feature_importance.csv)** dikonversi menjadi database **SQLite (.db)**. Untuk melakukan konversi kedua file menjadi database SQLite, Anda dapat menjalankan kode nya pada file [convert.py](convert.py) atau Anda dapat langsung mengunduh file hasil konversi SQLite pada [Database Predicted Dropout](predicted_dropout.db).
+Before being used in **Metabase**, the prediction results file **[probability_export.csv](probability_export.csv)** and the feature importance file **[top_feature_importance.csv](feature_importance.csv)** must be converted into a **SQLite (.db)** database.
 
-**🔍 Mengapa Menggunakan SQLite?**
-- **Kompatibilitas tinggi:** Metabase mendukung SQLite sebagai salah satu data source.
-- **Mudah dan ringan:** SQLite tidak memerlukan setup server, cukup file .db saja.
-- **Ideal untuk prototipe atau deployment skala kecil** seperti dashboard analitik lokal.
-- **Portable:** File SQLite bisa langsung digunakan oleh Metabase tanpa konfigurasi kompleks.
+To perform the conversion, you can either run the code provided in [convert.py](convert.py),  
+or directly download the converted SQLite database here: [Predicted Dropout Database](predicted_dropout.db).
 
-2️⃣ Jalankan Metabase via Docker
-- Install Docker Dekstop di situs resmi [Docker](https://docs.docker.com/desktop/setup/install/windows-install/).
-- Jalankan Docker Terminal lalu buat folder **metabase-data**:
+**🔍 Why Use SQLite?**
+
+- **High Compatibility**: Metabase supports SQLite as one of its data sources.  
+- **Lightweight and Simple**: SQLite requires no server setup—just a `.db` file.  
+- **Ideal for Prototypes or Small-Scale Deployments** such as local analytics dashboards.  
+- **Portable**: The SQLite file can be used directly in Metabase without complex configuration.
+
+2️⃣ **Run Metabase via Docker**
+
+- Install Docker Desktop from the official site: [Docker Installation Guide](https://docs.docker.com/desktop/setup/install/windows-install/)  
+- Open the Docker Terminal and create a folder named **metabase-data**:
   
   ```sh
   mkdir ~/metabase-share
   ```
 
-3️⃣ Tambah database SQLite sebagai data source di Metabase
+3️⃣ Add the SQLite Database as a Data Source in Metabase
 
-**Cukup pindahkan file [Database Predicted Dropout](predicted_dropout.db) pada Folder metabase-share, lalu Metabase bisa langsung membaca isi tabel dan membuat dashboard-nya.**
+**Simply move the file [Predicted Dropout Database](predicted_dropout.db) into the `metabase-share` folder, and Metabase will be able to read the table contents and build dashboards directly.**
 
 ```sh
 mv predicted_dropout.db ~/metabase-share/
 ```
 
-4️⃣ Menjalankan layanan Metabase menggunakan Docker Container dan menghubungkan folder lokal sebagai volume.
+4️⃣ Run the Metabase Service Using a Docker Container and Mount the Local Folder as a Volume
 
 ```sh
 docker run -d -p 3000:3000 -v "C:\Users\ACER NITRO V15\metabase-share:/app/metabase-student" --name metabase_new metabase/metabase
 ```
 
-**🔍 Penjelasan Kode:**
+**🔍 Code Explanation:**
 
-1. ```docker run:``` perintah untuk menjalankan container baru.
-2. ```-d:``` menjalankan container di background (detached mode).
-3. ```-p 3000:3000:``` memetakan **port 3000** di komputer host ke port 3000 di dalam container (Metabase secara default berjalan di port 3000).
-4. ```-v "C:\Users\ACER NITRO V15\metabase-share:/app/metabase-student":```
-   
-   Menghubungkan folder lokal **(C:\Users\...)** ke folder di dalam container **(/app/metabase-student)** agar dapat berbagi file, seperti database SQLite .db.
-5. ```--name metabase_new:``` memberi nama container sebagai metabase_new.
-6. ```metabase/metabase:``` image resmi Metabase dari Docker Hub.
+1. `docker run`: Command to start a new container.  
+2. `-d`: Runs the container in detached (background) mode.  
+3. `-p 3000:3000`: Maps **port 3000** on the host machine to port 3000 in the container (Metabase runs on port 3000 by default).  
+4. `-v "C:\Users\ACER NITRO V15\metabase-share:/app/metabase-student"`:  
+   Mounts the local folder **(C:\Users\...)** into the container folder **(/app/metabase-student)** to share files such as the SQLite `.db` database.  
+5. `--name metabase_new`: Names the container `metabase_new`.  
+6. `metabase/metabase`: The official Metabase image from Docker Hub.
 
-5️⃣ Akses Metabase melalui browser **```http://localhost:3000/```** lalu buat akun admin, contoh _(Username : Tsamarah Abdullah, Pass : Tsamarah192)_. Kemudian hubungkan file database yang telah tersimpan dalam folder lokal (C:\Users\ACER_NITRO_V15\metabase-share\predicted_dropout.db) ke container `/app/metabase-student/predicted_dropout.db` , atau Anda dapat langsung mengakses **Dashboard Student Monitoring :** 
+5️⃣ Access Metabase via your browser at **`http://localhost:3000/`**  
+Then create an admin account, for example: _(Username: Tsamarah Abdullah, Password: Tsamarah192)_.  
+Next, connect the database file located in your local folder  
+`C:\Users\ACER_NITRO_V15\metabase-share\predicted_dropout.db`  
+to the container path `/app/metabase-student/predicted_dropout.db`.
 
-![gambar Dashboard Monitoring Student](muthiah_abdullah-dashboard.jpg).
+Or simply open the **Student Monitoring Dashboard** here:
 
+![Student Monitoring Dashboard](muthiah_abdullah-dashboard.jpg)
 
 ## 📌Conclusion
 
 ---
-Berdasarkan hasil evaluasi feature importance dari model LightGBM yang telah dioptimalkan, ditemukan bahwa beberapa fitur memiliki kontribusi signifikan terhadap keputusan model dalam memprediksi kemungkinan student berpotensi dropout.
+Based on the feature importance evaluation from the optimized LightGBM model, several features were found to significantly influence the model’s decision in predicting whether a student is at risk of dropping out.
 
 ---
 
-**✅ Fitur Paling Berpengaruh:**
+**✅ Most Influential Features:**
 
-1️⃣ Admission_grade 
-> Mewakili nilai saat masuk—indikator kesiapan awal mahasiswa.
+1️⃣ **Admission_grade**  
+> Represents the student's entry-level grades — an indicator of initial academic readiness.
 
-2️⃣ Previous_qualification_grade
-> Mewakili nilai pendidikan sebelumnya.
+2️⃣ **Previous_qualification_grade**  
+> Reflects grades from previous educational qualifications.
 
-3️⃣ Course
-> Jenis/jurusan studi.
+3️⃣ **Course**  
+> The type or field of study.
 
-4️⃣ Mothers_occupation
-> Latar belakang pekerjaan ibu.
+4️⃣ **Mothers_occupation**  
+> Mother's occupational background.
 
-5️⃣ Age_at_enrollment
-> Usia saat mendaftar.
+5️⃣ **Age_at_enrollment**  
+> Age of the student at the time of enrollment.
 
-6️⃣ Approval_rate
-> Rasio lulus terhadap jumlah unit yang diambil.
+6️⃣ **Approval_rate**  
+> The ratio of passed courses to total enrolled units.
 
-7️⃣ Fathers_occupation
-> Latar belakang pekerjaan ayah.
+7️⃣ **Fathers_occupation**  
+> Father's occupational background.
 
-8️⃣ Curricular_units_2nd_sem_grade
-> Nilai semester 2.
+8️⃣ **Curricular_units_2nd_sem_grade**  
+> Second semester grade performance.
 
-9️⃣ Curricular_units_2nd_sem_evaluations 
-> Jumlah evaluasi semester 2.
+9️⃣ **Curricular_units_2nd_sem_evaluations**  
+> Number of evaluations completed in the second semester.
 
-🔟 Curricular_units_1st_sem_grade
-> Nilai semester 1.
+🔟 **Curricular_units_1st_sem_grade**  
+> First semester grade performance.
 
-### **👥 Karakteristik Umum Student yang Berpotensi Dropout:**
+### **👥 Common Characteristics of Students at Risk of Dropping Out:**
 
-Berdasarkan model prediktif, student yang berpotensi untuk dropout cenderung memiliki karakteristik berikut:
+Based on the predictive model, students likely to drop out tend to have the following characteristics:
 
-1️⃣ Mahasiswa yang berpotensi mengalami dropout umumnya memiliki nilai masuk yang rendah, yang menjadi indikator awal kurangnya kesiapan akademik.
+1️⃣ Students at risk generally have low admission grades, signaling a lack of initial academic preparedness.
 
-2️⃣ Cenderung memiliki nilai yang rendah pada kualifikasi pendidikan sebelumnya
+2️⃣ They tend to have lower grades in their previous educational qualifications.
 
-3️⃣ Berasal dari jurusan atau program studi dengan tingkat kesulitan tinggi atau ketidaksesuaian minat.
+3️⃣ They often come from courses or study programs with high difficulty levels or misalignment with their personal interests.
 
-4️⃣ Latar belakang keluarga turut memengaruhi, di mana pekerjaan orang tua yang kurang mendukung secara ekonomi atau pendidikan bisa menjadi salah satu pemicunya.
+4️⃣ Family background plays a role — especially when parents have occupations that offer limited economic or educational support.
 
-5️⃣ Faktor usia mahasiswa yang mulai kuliah juga menunjukkan kecenderungan lebih tinggi untuk keluar, kemungkinan karena memiliki tanggung jawab lain seperti pekerjaan atau keluarga.
+5️⃣ Students who enroll at an older age also show a higher tendency to drop out, possibly due to additional responsibilities such as work or family.
 
-6️⃣ Tingkat keberhasilan mereka dalam mata kuliah awal juga menjadi sinyal penting, terutama jika sejak semester pertama sudah menunjukkan nilai rendah atau jumlah evaluasi yang tidak memuaskan.
+6️⃣ Poor academic performance in the early semesters — including low grades or insufficient evaluations — serves as a strong indicator of potential dropout.
 
-> Proyek ini berhasil mengidentifikasi potensi dropout menggunakan model machine learning (LightGBM dengan SMOTE), mencapai akurasi hingga **90%**, serta mengoptimalkan **threshold** prediksi untuk hasil yang lebih akurat.
+> This project successfully identified dropout risk using a machine learning model (LightGBM with SMOTE), achieving an accuracy of **90%**, and optimized the **prediction threshold** for more accurate results.
 
-**Model menunjukkan bahwa potensi mahasiswa untuk dropout sangat dipengaruhi oleh kombinasi faktor akademik seperti (jumlah mata kuliah yang disetujui, nilai rata-rata, dan status pembayaran) dan faktor personal, termasuk (usia saat mendaftar, kondisi keuangan, serta latar belakang pendidikan orang tua).**
-
----
-
-## 💡Rekomendasi Action Items
-
-**✅ Berikut beberapa langkah strategis yang dapat dilakukan Institut Jaya Jaya:**
-
-1. 🎯 **Intervensi Berdasarkan Nilai Masuk**
-
-  **Insight:** Mahasiswa dengan nilai masuk rendah (Admission_grade) sangat rentan dropout.
-
-  **Action:** Berikan program matrikulasi atau bimbingan belajar tambahan sejak awal semester.
-
-2. 🧠 **Analisis Berdasarkan Riwayat Akademik**
-
-  **Insight:** Nilai pendidikan sebelumnya (Previous_qualification_grade) juga krusial.
-
-  **Action:**
-
-- Identifikasi mahasiswa dengan nilai akademik sebelumnya rendah.
-- Terapkan sistem early warning berdasarkan performa awal.
-
-
-3. 🧑‍🎓 **Evaluasi Program Studi Tertentu**
-
-  **Insight:** Fitur Course cukup berpengaruh—mungkin ada jurusan dengan dropout tinggi.
-
-  **Action:**
-
-- Lakukan audit akademik dan psikososial terhadap jurusan dengan dropout tinggi.
-
-- Perbaiki kurikulum, tingkat stres, atau beban SKS.
-
-4. 👪 **Latar Belakang Keluarga**
-
-  **Insight:** Pekerjaan orang tua (terutama ibu) berdampak besar.
-
-  **Action:**
-
-- Berikan pendampingan finansial/psikologis kepada mahasiswa dari keluarga rentan.
-
-- Buka akses beasiswa berdasarkan kondisi sosial-ekonomi.
-
-5. 🎓 **Umur dan Kemampuan Menyesuaikan Diri**
-
-  **Insight:** Usia saat mendaftar (Age_at_enrollment) berpengaruh—mungkin terkait adaptasi dan tanggung jawab keluarga.
-
-  **Action:**
-
-- Sediakan layanan konseling untuk mahasiswa usia non-tradisional.
-
-- Buat kelompok belajar lintas usia.
-
-6. 📉 **Kinerja Akademik Awal**
-
-  **Insight:** Nilai dan evaluasi pada semester 1 & 2 penting.
-
-  **Action:**
-
-- Implementasi sistem pemantauan nilai mingguan.
-
-- Kirim alert ke dosen PA dan akademik jika nilai mulai menurun.
+**The model reveals that student dropout potential is heavily influenced by a combination of academic factors (such as approved course units, GPA, and payment status) and personal factors (including age at enrollment, financial condition, and parental education background).**
 
 ---
 
-📧 Hubungi saya melalui [GitHub](https://github.com/MuthiahAinun) jika ada pertanyaan 😊.
+## 💡Recommended Action Items
+
+**✅ Below are several strategic steps that Jaya Jaya Institute can take:**
+
+1. 🎯 **Intervention Based on Admission Grades**
+
+   **Insight:** Students with low admission grades (`Admission_grade`) are highly vulnerable to dropping out.
+
+   **Action:**  
+   - Offer matriculation programs or additional academic support starting from the first semester.
+
+2. 🧠 **Analysis Based on Academic History**
+
+   **Insight:** Previous academic performance (`Previous_qualification_grade`) is also a key factor.
+
+   **Action:**  
+   - Identify students with low prior academic performance.  
+   - Implement an early warning system based on initial semester performance.
+
+3. 🧑‍🎓 **Evaluate Specific Study Programs**
+
+   **Insight:** The `Course` feature is quite influential—certain programs may have higher dropout rates.
+
+   **Action:**  
+   - Conduct academic and psychosocial audits on departments with high dropout rates.  
+   - Revise curricula, reduce stress levels, or adjust credit loads where necessary.
+
+4. 👪 **Family Background**
+
+   **Insight:** Parental occupation—especially the mother's—has a significant impact.
+
+   **Action:**  
+   - Provide financial or psychological support for students from vulnerable families.  
+   - Offer scholarships based on socio-economic conditions.
+
+5. 🎓 **Age and Adaptability**
+
+   **Insight:** `Age_at_enrollment` affects dropout risk—likely due to adjustment challenges or family responsibilities.
+
+   **Action:**  
+   - Provide counseling services for non-traditional (older) students.  
+   - Create cross-age peer learning groups.
+
+6. 📉 **Early Academic Performance**
+
+   **Insight:** Grades and evaluations in the 1st and 2nd semesters are critical indicators.
+
+   **Action:**  
+   - Implement a weekly academic performance monitoring system.  
+   - Send alerts to academic advisors if student grades begin to decline.
+
+---
+
+📧 Feel free to contact me via [GitHub](https://github.com/MuthiahAinun) if you have any questions 😊.
 
 ---
